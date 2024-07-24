@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="row mt-2">
+  <div class="col-lg-4 offset-lg-4">
+    <div class="card" style="width: 25rem;">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ tipoDeOperacion }} producto</h5>
+        <form [formGroup]="form" (ngSubmit)="addProduct()">
+          <input formControlName="nombre" type="text" class="form-control mt-3" placeholder="Ingrese nombre">
+          <span *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">
+            El campo nombre es <strong>requerido</strong>
+          </span>
+          <input formControlName="descripcion" type="text" class="form-control mt-3" placeholder="Ingrese descripcion">
+          <span *ngIf="form.get('descripcion')?.hasError('required') && form.get('descripcion')?.touched">
+            El campo descripcion es <strong>requerido</strong>
+          </span>
+          <input formControlName="precio" type="number" class="form-control mt-3" placeholder="Ingrese precio">
+          <span *ngIf="form.get('precio')?.hasError('required') && form.get('precio')?.touched">
+            El campo precio es <strong>requerido</strong>
+          </span>
+          <input formControlName="stock" type="number" class="form-control mt-3" placeholder="Ingrese stock">
+          <span *ngIf="form.get('stock')?.hasError('required') && form.get('stock')?.touched">
+            El campo stock es <strong>requerido</strong>
+          </span>
+          <div class="row mt-3 text-center">
+            <div class="col-lg-6">
+              <button routerLink="/dashboard" type="button" class="btn btn-secondary">Volver</button>
+            </div>
+            <div class="col-lg-6">
+              <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
